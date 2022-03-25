@@ -17,7 +17,7 @@ params.minThreshold = 0
 params.maxThreshold = 255
 params.thresholdStep = 1
 params.filterByArea = True
-params.minArea = 100
+params.minArea = 150
 params.minRepeatability = 1
 params.filterByColor = False
 

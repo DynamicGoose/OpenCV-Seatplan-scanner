@@ -77,7 +77,7 @@ points = (int(width), int(height))
 img_rs = resize(img, points, interpolation= INTER_LANCZOS4)
 seats = detector.detect(img_rs)
 
-f = open("output.txt", "w")
+f = open("D:\seatScanner\output.txt", "w")
 
 for keyPoint in seats:
     x = int(keyPoint.pt[0])

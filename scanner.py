@@ -15,9 +15,11 @@ params = SimpleBlobDetector_Params()
 
 params.minThreshold = 0
 params.maxThreshold = 255
+params.thresholdStep = 1
 params.filterByArea = True
 params.minArea = 100
 params.minRepeatability = 1
+params.filterByColor = False
 
 img = imread("test.jpg",1)
 

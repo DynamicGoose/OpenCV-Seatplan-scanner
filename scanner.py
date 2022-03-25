@@ -6,6 +6,11 @@ from cv2 import drawKeypoints
 from cv2 import DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS
 from cv2 import SimpleBlobDetector_create
 from cv2 import SimpleBlobDetector_Params
+from cv2 import DRAW_MATCHES_FLAGS_DEFAULT
+from cv2 import DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG
+from cv2 import DrawMatchesFlags_DRAW_RICH_KEYPOINTS
+from cv2 import circle
+from cv2 import LINE_AA
 import numpy as np
 from cv2 import imread
 from cv2 import imshow
@@ -27,7 +32,11 @@ detector = SimpleBlobDetector_create(params)
 
 seats = detector.detect(img)
 
-img_ws = drawKeypoints(img, seats, np.array([]), (0,0,255), DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+img_ws = img.copy()
+
+for keyPoint in seats:
+    blobCenter = (int(keyPoint.pt[0]),int(keyPoint.pt[1]))
+    circle(img_ws, blobCenter, 7, (0,0,255), thickness = -1, lineType = LINE_AA)  
 
 imshow("seats", img_ws)
 waitKey(0)

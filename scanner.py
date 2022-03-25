@@ -33,9 +33,12 @@ from cv2 import waitKey
 
 params = SimpleBlobDetector_Params()
 
+step = 30
+minArea = 150
+
 params.minThreshold = 0
 params.maxThreshold = 255
-params.thresholdStep = 10
+params.thresholdStep = 30
 params.filterByArea = True
 params.minArea = 150
 params.minRepeatability = 1
@@ -46,7 +49,7 @@ params.minConvexity = 0.9
 params.filterByInertia = True
 
 gap = 100
-minearea2 = 150
+minearea2 = 180
 
 img = imread("test.jpg",1)
 

@@ -88,18 +88,15 @@ def scan():
     img_rs = resize(img, points, interpolation= INTER_LANCZOS4)
     seats = detector.detect(img_rs)
 
-    f = open("D:\seatScanner\output.txt", "w")
-
+    arr = ""
     for keyPoint in seats:
         x = int(keyPoint.pt[0])
         y = int(keyPoint.pt[1])
         circle(img_rs, (x,y), 5, (0,0,200), thickness=-1, lineType=LINE_AA)
-        f.write("INSERT INTO Platz (PlanID, Stuhl, BereichID, X, Y, Bez1, Bez2, Bez3, Reflex, Xe, Ye, Sitzplatz, BestBuy, Sort, Jacket, Platz, Rotate) VALUES (138, 'Reihe 6 - Platz 1', 1, ")
-        f.write(str(x))
-        f.write(", ")
-        f.write(str(y))
-        f.write(", 'Block A', 'Reihe 6', 'Platz 1', 0, 0, 0, 1, 0, 0, NULL, 0, 0);\n")
-
+        arr = arr + "["+ str(x) + ", " + str(y) + "], "
+    arr = arr[:-2]
+    f = open("output.json", "w")
+    f.write("{\n    \"coords\": [" + arr + "]\n}")
     f.close()
 
     imshow("result", img_rs)

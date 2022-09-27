@@ -100,6 +100,7 @@ def scan():
     f.close()
 
     imshow("result", img_rs)
+    waitKey()
     
 win = tk.Tk()
 l1 = Label(win, text= "scan step (decrease if seat color is hard to see against backround)")
